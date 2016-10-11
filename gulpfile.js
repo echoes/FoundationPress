@@ -11,10 +11,12 @@ var colors      = require('colors');
 var dateFormat  = require('dateformat');
 var del         = require('del');
 var cleanCSS    = require('gulp-clean-css');
+var compass = require('gulp-compass'), path = require('path');
+
 
 // Enter URL of your local server here
 // Example: 'http://localwebsite.dev'
-var URL = '';
+var URL = 'http://cornaxwp';
 
 // Check for --production flag
 var isProduction = !!(argv.production);
@@ -101,6 +103,18 @@ gulp.task('browser-sync', ['build'], function() {
     // port: PORT
   });
 });
+
+//Use Compass
+gulp.task('compass', function() {
+  gulp.src('assets/scss/*.scss')
+      .pipe(compass({
+        project: path.join(__dirname, 'assets'),
+        css: 'css',
+        sass: 'sass'
+      }))
+      .pipe(gulp.dest('assets/stylesheets'));
+});
+
 
 // Compile Sass into CSS
 // In production, the CSS is compressed
