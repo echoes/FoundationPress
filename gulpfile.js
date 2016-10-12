@@ -11,7 +11,7 @@ var colors      = require('colors');
 var dateFormat  = require('dateformat');
 var del         = require('del');
 var cleanCSS    = require('gulp-clean-css');
-var compass = require('gulp-compass'), path = require('path');
+var compass = require('gulp-compass'), minifyCSS = require('gulp-minify-css');
 
 
 // Enter URL of your local server here
@@ -104,17 +104,45 @@ gulp.task('browser-sync', ['build'], function() {
   });
 });
 
-//Use Compass
+/*
 gulp.task('compass', function() {
-  gulp.src('assets/scss/*.scss')
-      .pipe(compass({
-        project: path.join(__dirname, 'assets'),
-        css: 'css',
-        sass: 'sass'
-      }))
-      .pipe(gulp.dest('assets/stylesheets'));
-});
+    return gulp.src('assets/scss/foundation.scss')
+        .pipe(compass({
+            css: 'stylesheets',
+            sass: 'scss',
+            image: 'images'
+        }))
+        .on('error', $.notify.onError({
+            message: "<%= error.message %>",
+            title: "Sass Error"
+        }))
+        .on('error', function(error) {
+            // Would like to catch the error here
+            console.log(error);
+            this.emit('end');
+        })
+        .pipe(minifyCSS())
+        .pipe(gulp.dest('assets/stylesheets'))
+        .pipe(browserSync.stream({match: '**!/!*.css'}));
+});*/
 
+
+gulp.task('compass', function() {
+    gulp.src('assets/scss/*.scss')
+        .pipe(compass({
+            import_path: ['assets/components', 'assets/components/fontawesome/scss', 'assets/components/foundation-sites/scss', 'assets/components/motion-ui'],
+            css: 'assets/stylesheets/',
+            sass: 'assets/scss/',
+            image: 'assets/images'
+            //,debug: true
+        }))
+        .on('error', $.notify.onError({
+            message: "<%= error.message %>",
+            title: "Compass Error"
+        }))
+        //.pipe(minifyCSS())
+        .pipe(gulp.dest('assets/stylesheets/'));
+});
 
 // Compile Sass into CSS
 // In production, the CSS is compressed
@@ -212,7 +240,7 @@ gulp.task('package', ['build'], function() {
 // Runs copy then runs sass & javascript in parallel
 gulp.task('build', ['clean'], function(done) {
   sequence('copy',
-          ['sass', 'javascript', 'lint'],
+          ['compass', 'javascript', 'lint'],
           done);
 });
 
@@ -270,7 +298,7 @@ gulp.task('default', ['build', 'browser-sync'], function() {
   }
 
   // Sass Watch
-  gulp.watch(['assets/scss/**/*.scss'], ['clean:css', 'sass'])
+  gulp.watch(['assets/scss/**/*.scss'], ['clean:css', 'compass'])
     .on('change', function(event) {
       logFileChange(event);
     });
