@@ -1,3 +1,91 @@
+//Global stuff
+
+a, img, svg{
+  @include single-transition(all, $anchor-transition-speed, ease-out);
+}
+#news-row{
+  position: relative;
+}
+header h1, #news-row h1{
+  background-color: $primary-color;
+  width: 100%;
+  display: inline-block;
+  position: absolute;
+  color: $white;
+  left:0;
+  margin-top: 0;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  line-height: 4rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+//now we need to lower the content, because of absolute positioning of header h1
+div.entry-content {
+  position: relative;
+  margin-top: 5rem;
+}
+.news-wrapper {
+  position: relative;
+  padding-top: 5rem;
+}
+.newsdivider{
+  width: 100%;
+  clear: both;
+}
+.nofront{
+  height: rem-calc(200)!important;
+}
+@include breakpoint(medium) {
+   .nofront {
+     height: rem-calc(400) !important;
+   }
+ }
+li.orbit-slide .small-6:first-of-type {
+  padding: 1rem 1rem 0 2rem;
+}
+
+li.orbit-slide .small-6:nth-of-type(2) {
+  padding: 1rem 2rem 0 1rem;
+}
+@include breakpoint(medium) {
+
+  li.orbit-slide .small-6:first-of-type {
+    padding: 1rem 2rem 0 4rem;
+  }
+
+  li.orbit-slide .small-6:nth-of-type(2) {
+    padding: 1rem 4rem 0 2rem;
+  }
+}
+@include breakpoint(large) {
+
+  li.orbit-slide .small-6:first-of-type {
+    padding: 1rem 2rem 0 6rem;
+  }
+
+  li.orbit-slide .small-6:nth-of-type(2) {
+    padding: 1rem 6rem 0 2rem;
+  }
+}
+li.orbit-slide h2{
+  text-transform: uppercase;
+  font-size: 1.2rem;
+}
+
+ul.orbit-container button {
+  display: block!important;
+  visibility: visible!important;
+  background: none 0 0 repeat scroll $primary-color !important;
+  appearance:button;
+  -moz-appearance:button; /* Firefox */
+  -webkit-appearance:button; /* Safari and Chrome */
+}
+
+li.orbit-slide img{
+  margin-bottom: 1rem;
+}
+
 // Page header
 #front-hero {
   .marketing {
@@ -10,7 +98,7 @@
     background-size: cover;
     background-position: bottom;
     padding: rem-calc(65%) 0;
-    margin: 0 0 rem-calc(32);
+    margin: 0;
     height: auto;
     position: relative;
     text-align: left;
@@ -21,7 +109,7 @@
     background-size: cover;
     background-position: center;
     height: rem-calc(685);
-    margin: 0 0 rem-calc(72);
+    margin: 0;
   }
 
   #watch {
@@ -137,6 +225,9 @@
       }
     }
   }
+}
+article:not(.widget){
+  background-color: white;
 }
 
 // Section divider

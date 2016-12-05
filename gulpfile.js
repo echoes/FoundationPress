@@ -134,14 +134,15 @@ gulp.task('compass', function() {
             css: 'assets/stylesheets/',
             sass: 'assets/scss/',
             image: 'assets/images'
-            //,debug: true
+            ,debug: true
         }))
         .on('error', $.notify.onError({
             message: "<%= error.message %>",
             title: "Compass Error"
         }))
         //.pipe(minifyCSS())
-        .pipe(gulp.dest('assets/stylesheets/'));
+        .pipe(gulp.dest('assets/stylesheets/'))
+        .pipe(browserSync.stream({match: '**/*.css'}));
 });
 
 // Compile Sass into CSS

@@ -1,10 +1,11 @@
 // Navigation breakpoints
 .desktop-menu, .top-bar-left {
-  @include show-for(medium);
+  //@include show-for(large);
+  display: none;
 }
 
 #mobile-menu, .title-bar {
-  @include hide-for(medium);
+  @include hide-for(large);
 }
 
 // Mobile menu
@@ -32,7 +33,7 @@
   .menu a {
     height: 45px;
     line-height: 45px;
-    color: #e6e6e6;
+    color: $white;
     padding-top: 0;
     padding-bottom: 0;
     font-weight: bold;
@@ -54,7 +55,7 @@
 
   .dropdown.menu .submenu {
     background-color: #121212;
-    color: #e6e6e6;
+    color: $white;
     border: 0;
   }
 

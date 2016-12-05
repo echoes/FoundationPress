@@ -1,9 +1,36 @@
+#featured-links {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+a.featured-icon-href.img-href svg {
+  margin: 3%;
+  fill: $secondary-color!important;
+}
+a.featured-icon-href.img-href:hover svg {
+  fill: $primary-color!important;
+}
+#featured-links a{
+  position: relative;
+}
+#featured-links a span {
+  text-align: center;
+  position: absolute;
+  display: block;
+  width: 100%;
+  bottom: rem-calc(30);
+  font-size: 0.65rem;
+  color: #f2dbbc;
+  font-weight: bold;
+}
+
 @include breakpoint(small) {
   #featured-hero {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    margin: 0 0 rem-calc(32);
+    margin: 0 0 ;
     position: relative;
     height: rem-calc(200);
   }
@@ -16,5 +43,31 @@
 @include breakpoint(medium) {
   #featured-hero {
     height: rem-calc(400);
+  }
+  a.featured-icon-href.img-href svg {
+    margin: 5%;
+  }
+  #featured-links a span {
+    font-size: 1rem;
+    bottom: rem-calc(70);
+  }
+}
+@include breakpoint(large) {
+  #featured-hero {
+    height: rem-calc(840);
+    max-height:90vh;
+    background-attachment: fixed;
+    background-position: center center;
+  }
+  a.featured-icon-href.img-href svg {
+    margin: 10%;
+  }
+}
+@include breakpoint(xlarge) {
+  a.featured-icon-href.img-href svg {
+    margin: 15%;
+  }
+  #featured-links a span {
+    bottom: rem-calc(90);
   }
 }

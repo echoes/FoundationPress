@@ -15,8 +15,9 @@
 
 get_header(); ?>
 
-<div id="page" role="main">
+<div id="page-sidebar-left" role="main">
 	<article class="main-content">
+	<?php get_template_part('template-parts/featured-image'); ?>
 	<?php if ( have_posts() ) : ?>
 
 		<?php /* Start the Loop */ ?>

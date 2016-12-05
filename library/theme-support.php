@@ -44,3 +44,69 @@ function foundationpress_theme_support() {
 
 add_action( 'after_setup_theme', 'foundationpress_theme_support' );
 endif;
+
+
+
+function allow_svg_upload_mimes( $mimes ) {
+    $mimes['svg'] = 'image/svg+xml';
+    return $mimes;
+}
+add_filter( 'upload_mimes', 'allow_svg_upload_mimes' );
+
+
+function get_related_ids($postid, $lines = 6){
+    $ret_arr = array();
+    $i = 0;
+
+    //first get same tags
+    $tags = wp_get_post_tags($postid);
+    if ($tags) {
+        $tag_ids = array();
+        foreach($tags as $individual_tag) $tag_ids[] = $individual_tag->term_id;
+
+        $related = get_posts(array(
+            'tag__in' => $tag_ids,
+            'post__not_in' => array($postid),
+            'posts_per_page'=>$lines, // Number of related posts to display.
+            'caller_get_posts'=>1
+        ));
+
+        $myposts = get_posts($related);
+
+        foreach ($myposts as $singlepost){
+            $i++;
+            setup_postdata($singlepost);
+            if ($i <= $lines){
+                $ret_arr[] = $singlepost->ID;
+            }
+        }
+    }
+    if ($i <= $lines){ //not enough lines, go to categories
+
+        $categories = get_the_category($postid);
+        if ($categories) {
+            $category_ids = array();
+            foreach($categories as $individual_category) $category_ids[] = $individual_category->term_id;
+
+            $related = get_posts(array(
+                'category__in' => $category_ids,
+                'post__not_in' => array($postid),
+                'posts_per_page'=>$lines, // Number of related posts to display.
+                'caller_get_posts'=>1
+            ));
+
+            $myposts = get_posts($related);
+
+            foreach ($myposts as $singlepost){
+                $i++;
+                setup_postdata($singlepost);
+                if ($i <= $lines){
+                    $ret_arr[] = $singlepost->ID;
+                }
+            }
+        }
+    }
+
+    return $ret_arr;
+
+}

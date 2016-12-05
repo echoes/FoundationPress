@@ -8,9 +8,10 @@
  */
 
 // Add additional image sizes
-add_image_size( 'fp-small', 640 );
+add_image_size( 'fp-small', 640, 640, true );
 add_image_size( 'fp-medium', 1024 );
 add_image_size( 'fp-large', 1200 );
+add_image_size( 'fp-xlarge', 1680 );
 
 // Register the new image sizes for use in the add media modal in wp-admin
 add_filter( 'image_size_names_choose', 'wpshout_custom_sizes' );
@@ -19,6 +20,7 @@ function wpshout_custom_sizes( $sizes ) {
 		'fp-small'  => __( 'FP Small' ),
 		'fp-medium' => __( 'FP Medium' ),
 		'fp-large'  => __( 'FP Large' ),
+		'fp-xlarge'  => __( 'FP XLarge' ),
 	) );
 }
 

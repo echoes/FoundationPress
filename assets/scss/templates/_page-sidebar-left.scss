@@ -1,27 +1,61 @@
 #page-sidebar-left {
   @include grid-row();
-  margin-top: 3rem;
+  //margin-top: 3rem;
+  width: 100%!important;
+  max-width: 100%!important;
+  background-color: $primary-color;
 
   .main-content {
     @include breakpoint(small) {
       @include grid-column(12);
     }
 
-    @include breakpoint(medium) {
+    @include breakpoint(large) {
       @include grid-column(8);
       @include grid-col-pos(4);
     }
+
+    @include breakpoint(xlarge) {
+      @include grid-column(9);
+      @include grid-col-pos(3);
+    }
+
+    @include breakpoint(xxlarge) {
+      @include grid-column(8);
+      @include grid-col-pos(2);
+    }
+
+    padding-left: 0!important;
+    padding-right: 0!important;
   }
 
   .sidebar {
+    background-color: $secondary-color;
+
     @include breakpoint(small) {
       @include grid-column(12);
     }
 
-    @include breakpoint(medium) {
+    @include breakpoint(large) {
       @include grid-column(4);
       @include grid-col-pos(-8);
-      margin-top: 1rem;
+      margin-top: 0;
     }
+
+    @include breakpoint(xlarge) {
+      @include grid-column(3);
+      @include grid-col-pos(-9);
+      margin-top: 0;
+    }
+
+    @include breakpoint(xxlarge) {
+      @include grid-column(2);
+      @include grid-col-pos(-10);
+      margin-top: 0;
+    }
+  }
+  //because of the hero, we need to set padding on the entry-wrap
+  .entry-wrap{
+    @include grid-column(12);
   }
 }

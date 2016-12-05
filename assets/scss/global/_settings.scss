@@ -42,6 +42,13 @@
 
 @import '../../components/foundation-sites/scss/util/util';
 
+
+//@import "social_foundicons";
+@import '../../stylesheets/fontello.css';
+@import '../../stylesheets/fontello-codes.css';
+@import '../../stylesheets/social.css';
+@import '../../stylesheets/social-codes.css';
+
 // 1. Global
 // ---------
 
@@ -49,9 +56,9 @@ $global-font-size: 100%;
 $global-width: rem-calc(1200);
 $global-lineheight: 1.5;
 $foundation-palette: (
-  primary: #386c5f,
-  secondary: #6c5b43,
-  tertiary: #926d37,
+  primary: #315f4c,
+  secondary: #786954,
+  tertiary: #b08a3c,
   success: #3adb76,
   warning: #ffae00,
   alert: #ec5840,
@@ -84,7 +91,7 @@ $breakpoints: (
   medium: 640px,
   large: 1024px,
   xlarge: 1200px,
-  xxlarge: 1440px,
+  xxlarge: 1680px,
 );
 $breakpoint-classes: (small medium large);
 
@@ -95,7 +102,7 @@ $grid-row-width: $global-width;
 $grid-column-count: 12;
 $grid-column-gutter: (
   small: 20px,
-  medium: 30px,
+  medium: 40px,
 );
 $grid-column-align-edge: true;
 $block-grid-max: 8;
@@ -117,11 +124,11 @@ $header-sizes: (
     'h6': 16,
   ),
   medium: (
-    'h1': 48,
-    'h2': 40,
-    'h3': 31,
-    'h4': 25,
-    'h5': 20,
+    'h1': 34,
+    'h2': 28,
+    'h3': 23,
+    'h4': 21,
+    'h5': 18,
     'h6': 16,
   ),
 );
@@ -144,6 +151,7 @@ $anchor-color: $primary-color;
 $anchor-color-hover: scale-color($anchor-color, $lightness: -14%);
 $anchor-text-decoration: none;
 $anchor-text-decoration-hover: none;
+$anchor-transition-speed: 600ms;
 $hr-width: $global-width;
 $hr-border: 1px solid $medium-gray;
 $hr-margin: rem-calc(20) auto;
