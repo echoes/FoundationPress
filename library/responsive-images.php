@@ -20,11 +20,9 @@ add_image_size( 'featured-xlarge', 1920, 400, true );
 add_image_size( 'fp-small', 640, 640, true );
 add_image_size( 'fp-medium', 1024 );
 add_image_size( 'fp-large', 1200 );
-<<<<<<< HEAD
+
 add_image_size( 'fp-xlarge', 1680 );
-=======
-add_image_size( 'fp-xlarge', 1920 );
->>>>>>> olefredrik/master
+
 
 // Register the new image sizes for use in the add media modal in wp-admin
 function foundationpress_custom_sizes( $sizes ) {
