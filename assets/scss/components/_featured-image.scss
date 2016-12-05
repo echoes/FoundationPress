@@ -1,3 +1,4 @@
+
 #featured-links {
   position: absolute;
   bottom: 0;
@@ -35,13 +36,18 @@ a.featured-icon-href.img-href:hover svg {
     height: rem-calc(200);
   }
 
-  .no-featured-image-set {
-    height: rem-calc(16) !important;
-  }
-}
+#featured-hero {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: rem-calc(100);
 
-@include breakpoint(medium) {
-  #featured-hero {
+
+  @include breakpoint(medium) {
+    height: rem-calc(200);
+  }
+
+  @include breakpoint(xlarge) {
     height: rem-calc(400);
   }
   a.featured-icon-href.img-href svg {

@@ -10,6 +10,7 @@ get_header(); ?>
 
 <div id="page-sidebar-left" role="main">
 
+
 <?php do_action( 'foundationpress_before_content' ); ?>
 <?php while ( have_posts() ) : the_post(); ?>
 	<article <?php post_class('main-content') ?> id="post-<?php the_ID(); ?>">
@@ -26,8 +27,10 @@ get_header(); ?>
 
 
 
+
 		<?php the_content(); ?>
 		<?php edit_post_link( __( 'Edit', 'foundationpress' ), '<span class="edit-link">', '</span>' ); ?>
+
 		</div>
 		</div>
 		<hr />
